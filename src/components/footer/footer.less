@@ -1,0 +1,43 @@
+
+@import './../../colors.less';
+@import './../../fontFamily.less';
+
+
+// footer的包裹元素
+.footer-wrap {
+
+  position: absolute;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  bottom: 0rem;
+  width: 100%;
+  font-size: 0.8rem;
+  box-sizing: border-box;
+  background-color: @BACKGROUND_COLOR;
+
+  // 右侧版权声明
+  .copyright {
+    color: @LITLE_COLOR;
+    float: right;
+    font-weight: 100;
+    
+    letter-spacing: 0.1rem;
+    font-family: GothanLight;
+  }
+
+  // 左侧联系作者
+  .author-inform {
+    color: @LITLE_COLOR;
+    font-family: GothanBold;
+    letter-spacing: 0.1rem;
+    
+    // font-size: 0.9rem;
+    span {
+      margin-right: 2rem;
+    }
+  }
+
+
+}

@@ -1,9 +1,16 @@
 
 @import './../../colors.less';
+@import './../../fontFamily.less';
 
-@font-face {
-  font-family: 'WGTitle';
-  src: url('/assets/fonts/mswg2.ttf')
+// css3动画 定义头部动画
+@keyframes headerDown {
+  from {
+    padding-top: 0rem;
+  }
+
+  to {
+    padding-top: 1rem;
+  }
 }
 
 // 顶部公共header样式
@@ -11,42 +18,87 @@
 
   display: flex;
   justify-content: space-between;
-  
+  align-items: center;
 
-  height: 2.6rem;
-  line-height: 2.6rem;
-  margin: 0 1rem;
+  height: 4rem;
+  line-height: 4rem;
+  padding: 0 1rem;
+  padding-bottom: 1rem;
+  // border-bottom: @LINE_COLOR solid 1px;
+
+  animation: headerDown 2s forwards;
 
   // header标题的包裹元素
   .header-title-wrap {
     flex-shrink: 0;
+    display: flex;
+    justify-content: space-between;
+
+    // logo
+    img {
+      width: 3rem;
+      color: @THEME_COLOR;
+    }
+  }
+  .header-title-wrap:hover {
+    color: @THEME_COLOR;
+    transition: all .2s;
   }
 
   // header标题 灵思 的样式
   .header-title {
-    font-size: 1.6rem;
-    color: @THEME_COLOR;
+    font-size: 2rem;
+    // color: @THEME_COLOR;
     font-family: WGTitle;
+    // font-family: JoyM;
+
   }
 
   // 右侧导航栏样式
   .header-nav-wrap {
-
+    position: relative;
   }
 
-  // header右侧导航栏中，每一个导航按钮的样式
+  // header右侧导航栏中，每一个导航按钮 外层包裹样式
   .nav-item {
-    font-size: 0.8rem;
-    padding: 0.4rem 1rem;
-    margin-right: 1rem;
+    position: relative;
+    display: inline-block;
+    font-size: 1.2rem;
+    margin-right: 2rem;
     border-radius: 0.1rem;
     color: @TITLE_COLOR;
   }
 
-  .nav-item:hover {
+  // 内层文字span样式，用于伪类:after定位
+  .nav-item-span {
+    position: relative;
     cursor: pointer;
+    font-family: GothanBold;
+  }
+
+  .nav-item-span:hover {
+    color: @THEME_COLOR;
+    transition: all .2s;
+  }
+
+  // 下方伪类生成的小横线
+  .nav-item-span:after {
+    content: ' ';
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    height: 2px;
+    width: 100%;
+    display: inline-block;
+    transition: all .2s cubic-bezier(0.18, 0.89, 0.17, 0.88), opacity .15s ease;
+    opacity: 0;
+    transform: scaleX(0);
     background-color: @THEME_COLOR;
-    color: @WHITE_COLOR;
+  }
+
+  .nav-item-span:hover:after {
+    transform: scaleX(1);
+    opacity: 1;
   }
 }
 
