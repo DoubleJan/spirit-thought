@@ -3,6 +3,7 @@ import { HashRouter, Route, Switch, Redirect } from 'react-router-dom';
 
 import Header from './components/header/Header';
 import Footer from './components/footer/Footer';
+import BottomNav from './components/bottomNav/BottomNav';
 
 import Home from './pages/home/Home'
 import Note from './pages/note/Note';
@@ -26,6 +27,7 @@ function App() {
         </Switch>
       </HashRouter>
       <Footer />
+      <BottomNav />
     </div>
   );
 }

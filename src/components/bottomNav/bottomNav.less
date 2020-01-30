@@ -1,0 +1,22 @@
+
+// 移动端 600px以下，显示底部导航栏
+.bottom-nav-wrap {
+  display: none;
+}
+
+@media (max-width: 600px) {
+  .bottom-nav-wrap {
+    box-sizing: border-box;
+    position: absolute;
+    height: 2rem;
+    bottom: 0rem;
+    width: 100%;
+
+    display: flex;
+    justify-content: space-between;
+
+    // margin-left: 10%;
+    padding: 0 10%;
+
+  }
+}

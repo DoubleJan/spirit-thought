@@ -5,9 +5,17 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  min-width: 240px;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+/* 移动端 600px以下，没有footer，显示bottom-nav */
+@media (max-width: 600px) {
+  .footer-wrap {
+    display: none;
+  }
 }

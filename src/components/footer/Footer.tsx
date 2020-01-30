@@ -3,7 +3,7 @@ import React from 'react';
 
 function Footer() {
   return (
-    <footer>Footer</footer>
+    <footer className={'footer-wrap'}>Footer</footer>
   )
 }
 
