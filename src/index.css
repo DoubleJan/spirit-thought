@@ -6,6 +6,12 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   min-width: 240px;
+  min-height: 100vh;  
+  position: relative;
+}
+
+.page-body {
+  padding-bottom: 3.2rem;
 }
 
 code {

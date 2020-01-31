@@ -26,8 +26,6 @@
   padding-bottom: 1rem;
   // border-bottom: @LINE_COLOR solid 1px;
 
-  animation: headerDown 2s forwards;
-
   // header标题的包裹元素
   .header-title-wrap {
     flex-shrink: 0;
@@ -102,12 +100,21 @@
   }
 }
 
+// 700px以上，即非移动端，才执行动画
+@media screen and (min-width: 700px) {
+  .header-wrap {
+    animation: headerDown 2s forwards;
+  }
+}
+
 //小于600像素之后的样式，适配移动端
-@media (max-width: 600px) {
+@media (max-width: 700px) {
 
   // 移动端上，标题左右居中
   .header-wrap {
     justify-content: center;
+    padding: 0rem;
+    border-bottom: @LINE_COLOR solid 1px;
   }
 
   // 移动端上，没有导航栏，采用底部导航栏取代

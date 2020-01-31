@@ -1,0 +1,118 @@
+@import './../../colors.less';
+@import './../../fontFamily.less';
+
+
+// home组件最外层包裹样式
+.home-wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding: 2rem;
+}
+
+// 左侧标语包裹元素样式
+.slogan-wrap {
+  margin-bottom: 20rem;
+  margin-left: 4rem;
+  max-width: 50%;
+  text-align: justify;
+
+  h1 {
+    font-size: 3rem;
+    font-family: GothanBold;
+    letter-spacing: 0.2rem;
+  }
+
+  p {
+    color: @CONTENT_COLOR;
+    line-height: 1.6rem;
+    font-family: GothanLight;
+    font-size: 0.9rem;
+    margin-top: 1rem;
+    letter-spacing: 0.1rem;
+  }
+}
+
+// 图片包裹元素样式
+.home-img-wrap {
+
+  width: 20rem;
+  height: 40rem;
+  margin-right: 4rem;
+  overflow: hidden;
+  
+  img {
+    height: 100%;
+    opacity: 0.4;
+  }
+}
+
+// 1060px以下，图片和slogan两侧的边距变小，保证中间不挤压
+@media screen and (max-width: 1060px) {
+  .slogan-wrap {
+    margin-left: 2rem;
+  }
+  .home-img-wrap {
+    margin-right: 2rem;
+  }
+}
+
+// 900px以下，使用移动端布局
+@media screen and (max-width: 900px) {
+
+  // flex反向竖排版，让图片在上面
+  .home-wrap {
+    flex-direction: column-reverse;
+    justify-content: flex-start;
+    align-items: stretch;
+  }
+
+  // 清除图片和slogan两侧和底部的多余边距，
+  .slogan-wrap {
+    margin-left: 0rem;
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 2rem;
+
+    h1 {
+      text-align: center;
+    }
+  }
+
+  // 图片内部flex布局，底部对齐，这样能看到图片的底部，而不是顶部，顶部颜色较淡
+  .home-img-wrap {
+    margin-right: 0rem;
+    width: 100%;
+    height: 12rem;
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 2rem;
+
+    img {
+      height: auto;
+    }
+  }
+}
+
+// 470px以下，slogan字号要变小
+@media screen and (max-width: 470px) {
+  .slogan-wrap {
+    h1 {
+      font-size: 2rem;
+      letter-spacing: 0.1rem;
+    }
+
+    p {
+      font-size: 0.8rem;
+      letter-spacing: 0.1rem;
+    }
+  }
+}
+
+@media screen and (max-width: 330px) {
+  .slogan-wrap {
+    h1 {
+      font-size: 1.4rem;
+    }
+  }
+}

@@ -10,25 +10,27 @@ import Note from './pages/note/Note';
 import Article from './pages/article/Article';
 
 import Admin from './pages/admin/Admin';
-import Health from './pages/health/Health';
+import Code from './pages/code/Code';
 
 function App() {
   return (
-    <div className="App">
-      <Header />
-      <HashRouter>
-        <Switch>
-          <Route exact path="/" component={Home} />
-          <Route exact path="/note" component={Note} />
-          <Route exact path="/article" component={Article} />
-          <Route exact path="/health" component={Health} />
-          <Route exact path="/admin" component={Admin} />
-          <Redirect to="/" />
-        </Switch>
-      </HashRouter>
-      <Footer />
-      <BottomNav />
-    </div>
+    <HashRouter>
+      <div className="App">
+        <Header />
+        <div className={'page-body'}>
+          <Switch>
+            <Route exact path="/" component={Home} />
+            <Route exact path="/note" component={Note} />
+            <Route exact path="/article" component={Article} />
+            <Route exact path="/code" component={Code} />
+            <Route exact path="/admin" component={Admin} />
+            <Redirect to="/" />
+          </Switch>
+        </div>
+        <Footer />
+        <BottomNav />
+      </div>
+    </HashRouter>
   );
 }
 

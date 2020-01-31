@@ -2,6 +2,27 @@
 @import './../../colors.less';
 @import './../../fontFamily.less';
 
+@keyframes activedInform {
+  from {
+    margin-left: -12rem;
+    opacity: 0;
+  }
+  to {
+    margin-left: 0rem;
+    opacity: 1;
+  }
+}
+
+@keyframes activedInform {
+  from {
+    margin-left: -8rem;
+    opacity: 0;
+  }
+  to {
+    margin-left: 0rem;
+    opacity: 1;
+  }
+}
 
 // footer的包裹元素
 .footer-wrap {
@@ -29,15 +50,58 @@
 
   // 左侧联系作者
   .author-inform {
+    display: flex;
+    align-items: center;
+    // vertical-align: middle;
     color: @LITLE_COLOR;
-    font-family: GothanBold;
+    
     letter-spacing: 0.1rem;
     
     // font-size: 0.9rem;
     span {
       margin-right: 2rem;
     }
+
+    img {
+      display: inline-block;
+      width: 1.2rem;
+      margin-right: 0.2rem;
+    }
   }
 
+  // 标题样式
+  .inform-title {
+    font-family: GothanBold;
+    
+  }
 
+  // 内容样式
+  .inform-detail {
+    font-family: GothanMedium;
+    margin-left: -12rem;
+    opacity: 0;
+    // display: none;
+  }
+  .inform-active {
+    display: inline-block;
+    animation: activedInform 2s forwards;
+  }
+
+}
+
+// 1100px以下，没有左侧联系作者
+@media screen and (max-width: 1100px) {
+  .footer-wrap {
+    justify-content: center;
+    .author-inform {
+      display: none;
+    }
+  }
+}
+
+// 700px以下视为移动端
+@media screen and (max-width: 700px) {
+  .footer-wrap {
+    display: none;
+  }
 }
