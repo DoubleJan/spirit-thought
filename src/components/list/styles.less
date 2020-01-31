@@ -1,0 +1,123 @@
+// listview listitem styles
+@import './../../colors.less';
+
+@keyframes activedMenu {
+  from {
+    margin-left: 0rem;
+  }
+
+  to {
+    margin-left: 1rem;
+  }
+}
+
+// 列表最外层包裹元素 flex，内部元素左右居中
+.list-view-wrap {
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  background-color: @BACKGROUND_COLOR; 
+}
+
+// 列表主体
+.list {
+  width: 56rem;
+  // width: 50%;
+  padding: 1rem;
+  // border: green solid 1px;
+}
+
+// 列表左侧博文目录菜单
+.list-menu-wrap {
+  width: 14rem;
+  margin-right: 1rem;
+  margin-top: 1rem;
+  // position: fixed;
+
+  // 每一个menu item的样式
+  .menu-item {
+    padding: 1rem;
+    margin-bottom: 0.8rem;
+    border-radius: 0.4rem;
+
+    color: @CONTENT_COLOR;
+    background-color: #fff;
+    font-weight: 200;
+    cursor: pointer;
+
+    &.actived-menu {
+      animation: activedMenu .4s forwards;
+    }
+  }
+}
+
+// 列表每一个文章简述的样式
+.list-item-wrap {
+  margin-bottom: 2rem;
+  border-bottom: @LINE_COLOR solid 1px;
+  background-color: #fff;
+  padding: 1rem;
+  border-radius: 0.2rem;
+
+  // hover时，外阴影
+  &:hover {
+    box-shadow: 0rem .1rem 1rem 0rem rgba(0, 0, 0, 0.08);
+  }
+
+  // 头部标题，flex左对齐
+  .item-title {
+
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 1rem;
+
+    // img包裹元素，为了防止没有图片，背景色给一个灰色
+    .item-img-wrap {
+      background-color: @BACKGROUND_COLOR;
+      width: 3rem;
+      height: 3rem;
+    }
+
+    img {
+      width: 100%;
+      width: 100%;
+    }
+
+    p {
+      font-size: 1.6rem;
+      font-weight: 900;
+      margin-left: 1rem;
+      color: @TITLE_COLOR
+    }
+  }
+
+  // item的底部的其他信息包裹元素
+  .other-detail {
+
+    // flex横向布局右对齐
+    display: flex;
+    justify-content: flex-end;
+    
+    // 字体最细，设置行高为了上下居中并留出空白，使用小号字
+    span {
+      color: @LITLE_COLOR;
+      font-weight: 100;
+      letter-spacing: 0.1rem;
+      font-size: 0.8rem;
+      margin-left: 1rem;
+      line-height: 3rem;
+    }
+  }
+
+  // 文章概述信息的样式
+  // 两端对齐，使用正文颜色，字体更细，行高更高，字符间距略大
+  .item-desc {
+    text-align: justify;
+    color: @CONTENT_COLOR;
+    font-weight: lighter;
+    line-height: 1.6rem;
+    letter-spacing: 0.06rem;
+  }
+}

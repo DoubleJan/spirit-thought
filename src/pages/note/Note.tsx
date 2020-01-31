@@ -1,8 +1,11 @@
 // 笔记
 import React from 'react';
+import ListView from './../../components/list/ListView'
 
 function Note() {
-  return <h1>Note Page</h1>;
+  return (
+    <ListView />
+  )
 }
 
 export default Note;
