@@ -98,6 +98,23 @@
     transform: scaleX(1);
     opacity: 1;
   }
+
+  // 点击路由后，被选中的样式
+  .actived-nav-span {
+    color: @THEME_COLOR;
+    
+    &.nav-item-span:after {
+      transform: scaleX(1);
+      opacity: 1;
+    }
+  }
+}
+
+// 900px以下，不显示admin路由
+@media screen and (max-width: 900px) {
+  .header-wrap .none-admin {
+    display: none;
+  }
 }
 
 // 700px以上，即非移动端，才执行动画

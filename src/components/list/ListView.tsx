@@ -3,23 +3,23 @@
 import React from 'react';
 import ListItem from './ListItem';
 import ListMenu from './ListMenu';
+import { DirectoryList, NoteList } from './index';
 
 import './styles.less';
 
-function initListItem () {
-  const arr = [];
-  for (let i = 0; i < 10; i++) {
-    arr.push(<ListItem key={i} />);
+function initListItem (noteList: NoteList) {
+  if (Array.isArray(noteList)) {
+    return noteList.map((item, i) => <ListItem key={i} note={item} />)
   }
-  return arr;
+  return null;
 }
 
-function ListView() {
+function ListView({ directoryList, noteList }: { directoryList: DirectoryList, noteList: NoteList }) {
   return (
     <div className={"list-view-wrap"}>
-      <ListMenu />
+      <ListMenu { ...{ directoryList } } />
       <div className={'list'}>
-        {initListItem()}
+        {initListItem(noteList)}
       </div>
     </div>
   )

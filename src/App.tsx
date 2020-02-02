@@ -13,6 +13,7 @@ import Admin from './pages/admin/Admin';
 import Code from './pages/code/Code';
 
 function App() {
+  
   return (
     <HashRouter>
       <div className="App">
