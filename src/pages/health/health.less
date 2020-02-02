@@ -1,0 +1,198 @@
+@import './../../colors.less';
+@import './../../fontFamily.less';
+
+// 最外层包裹元素，为了内部flex布局，和浅灰色背景做区分
+.health-outer-wrap {
+  display: flex;
+  justify-content: center;
+  background-color: @BACKGROUND_COLOR;
+  min-height: 100vh;
+  padding-bottom: 3rem;
+}
+
+// 内部的白色包裹元素，为了定宽度，且白色背景与外面做区分
+.health-wrap {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 40rem;
+  background-color: #fff;
+
+  // 标题
+  h1 {
+    font-size: 2rem;
+    font-weight: bolder;
+    color: @TITLE_COLOR;
+    margin-top: 3rem;
+    margin-bottom: 1rem;
+  }
+
+  // 当前时间
+  .now-time {
+    color: @TITLE_COLOR;
+    margin-bottom: 4rem;
+    font-weight: 200;
+  }
+
+  // form表单样式，flex布局方便内部居中或横向占满
+  .form {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 100%;
+    padding: 2rem;
+    box-sizing: border-box;
+  }
+
+  // input输入框的基础样式
+  input, textarea {
+    margin: 1rem 0;
+    padding: 0.6rem;
+    font-size: 1.2rem;
+    color: @CONTENT_COLOR;
+    border: @BORDER_COLOR solid 1px;
+    border-radius: 0.1rem;
+    font-weight: 100;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  textarea {
+    height: 6rem;
+    font-size: 1.2rem;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  }
+
+  // 针对chrome，firefox，ie设置placeholder颜色
+  input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
+    color: @LITLE_COLOR;
+  }
+
+  input:-ms-input-placeholder, textarea::-webkit-input-placeholder {
+    color: @LITLE_COLOR;
+  }
+
+  input::-moz-placeholder, textarea::-webkit-input-placeholder {
+    color: @LITLE_COLOR;
+  }
+
+  // 提交按钮基本样式
+  button {
+    background-color: @THEME_COLOR;
+    color: #fff;
+    border: none;
+    font-size: 1.2rem;
+    padding: 0.6rem;
+    letter-spacing: 0.2rem;
+    margin-top: 2rem;
+    border-radius: 0.2rem;
+    cursor: pointer;
+    outline: none;
+
+  }
+
+  // 提交按钮hover样式，颜色变深
+  button:hover {
+    background-color: @THEME_COLOR;
+    transform: all .4s;
+  }
+
+  // 布尔控件
+  .boolean-wrap {
+    display: flex;
+    justify-content: flex-start;
+    align-items: stretch;
+    
+    // 左侧的关联input
+    .boolean-item {
+      width: 50%;
+    }
+
+    // 右侧开关
+    .boolean-switch {
+      width: 25%;
+      // line-height: 3.6rem;
+      vertical-align: middle;
+      font-size: 1.2rem;
+      color: #fff;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    // 真值
+    .switch-true {
+      background-color: @SUCCESS_COLOR;
+    }
+
+    // 假值
+    .switch-false {
+      background-color: @DANGER_COLOR;
+    }
+
+    // switch值为真的时候，占完50%
+    .to-true {
+      width: 50%;
+      transition: .6s all;
+    }
+
+    // 反之0
+    .to-false {
+      width: 0;
+      transition: .6s all;
+
+      // 此时这个文字要消失，且过渡效果要略快
+      span {
+        opacity: 0;
+        transition: .4s all;
+      }
+    }
+
+  }
+
+}
+
+@media screen and (max-width: 700px) {
+
+  .health-outer-wrap {
+    padding-bottom: 0;
+  }
+
+  // 小于了以后，宽度占满
+  .health-wrap {
+    width: 100%;
+
+    h1 {
+      font-size: 1.8rem;
+    }
+    
+    .form {
+      padding: 0;
+    }
+
+    input, textarea {
+      margin: 0;
+      border: none;
+      border-bottom: 1px solid @BACKGROUND_COLOR;
+      padding: 1rem;
+    }
+
+    .boolean-switch {
+      // margin-top: 1px;
+      border-bottom: #fff solid 1px;
+      box-sizing: border-box;
+    }
+
+    button {
+      margin: 2rem 0.8rem 1rem;
+    }
+
+
+
+  }
+}
+

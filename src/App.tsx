@@ -8,28 +8,33 @@ import BottomNav from './components/bottomNav/BottomNav';
 import Home from './pages/home/Home'
 import Note from './pages/note/Note';
 import Article from './pages/article/Article';
-
-import Admin from './pages/admin/Admin';
 import Code from './pages/code/Code';
 
+import Admin from './pages/admin/Admin';
+import Health from './pages/health/Health';
+
+
 function App() {
-  
+
+  const href = window.location.href;
+
   return (
     <HashRouter>
       <div className="App">
-        <Header />
-        <div className={'page-body'}>
+        {!href.includes('health') && <Header />}
+        <div className={`${href.includes('/health') ? '' : 'page-body'}`}>
           <Switch>
             <Route exact path="/" component={Home} />
             <Route exact path="/note" component={Note} />
             <Route exact path="/article" component={Article} />
             <Route exact path="/code" component={Code} />
+            <Route exact path="/health" component={Health} />
             <Route exact path="/admin" component={Admin} />
             <Redirect to="/" />
           </Switch>
         </div>
         <Footer />
-        <BottomNav />
+        {!href.includes('health') && <BottomNav />}
       </div>
     </HashRouter>
   );

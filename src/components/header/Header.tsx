@@ -1,18 +1,12 @@
 // 头部header
-import React, { useState } from 'react';
+import React from 'react';
 import { useHistory, useLocation } from "react-router-dom";
-import { Location } from 'history';
 import './header.less';
 
-// 格式化不规范的路由
-function formatLocation(location: Location) {
-  console.log('loc: ', location);
-}
 
 function Header() {
   const history = useHistory();
   const location = useLocation();
-  // formatLocation(location);
 
   return (
     <header className={'header-wrap'}>
