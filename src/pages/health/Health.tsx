@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 // import Message from './../../components/message/message';
 // import { MESSAGE_TYPE } from './../../components/message';
 import moment from 'moment';
+import * as healthServ from './healthServ';
 import './health.less';
 
 // import * as dd from 'dingtalk-jsapi';
@@ -17,24 +18,38 @@ import './health.less';
 
 const HealthForm: HealthFormType = {
   'name': { label: '姓名' },
-  'department': { label: '部门', isSwitch: false },
-  'address': { label: '住址', isSwitch: false },
+  'department': { label: '部门' },
+  'address': { label: '住址' },
   'bodyStatus': { label: '身体状况', isSwitch: true },
-  'bodyExp': { label: '身体异常', isSwitch: false },
+  'bodyExp': { label: '身体异常', need: 'bodyStatus' },
   'touchStatus': { label: '主要接触人情况', isSwitch: true },
-  'touchExp': { label: '主要接触人身体异常情况', isSwitch: false },
+  'touchExp': { label: '主要接触人身体异常情况', need: 'touchStatus' },
   'inHome': { label: '是否宅家', isSwitch: true },
-  'isMask': { label: '是否佩戴口罩', isSwitch: true },
-  'activityInfo': { label: '外出活动范围与事项', isSwitch: false }
+  'isMask': { label: '是否佩戴口罩', isSwitch: true, need: 'inHome' },
+  'activityInfo': { label: '外出活动范围与事项', need: 'inHome' }
 }
 
 interface Field {
   label: string;
   isSwitch?: boolean;
+  need?: string;
 }
 
 interface HealthFormType {
   [props: string]: Field
+}
+
+interface HealthDetail {
+  'name': string,
+  'department': string,
+  'address': string,
+  'bodyStatus': boolean,
+  'bodyExp'?: string,
+  'touchStatus': boolean,
+  'touchExp'?: string,
+  'inHome': boolean,
+  'isMask'?: boolean,
+  'activityInfo'?: string
 }
 
 // 改变状态
@@ -53,8 +68,14 @@ interface InputName {
 
 type Input = Node & InputName & Element;
 
+// 发送提交表单请求
+async function postHealth(values: HealthDetail) {
+  const res = await healthServ.postHealth(values);
+  console.log(res);
+}
 
-function postHealth() {
+// 提交方法
+function submitHealth(status: any) {
 
   const form = document.querySelector('#form');
 
@@ -69,16 +90,26 @@ function postHealth() {
       return acc;
     }, {});
 
-    const notValid = Object.keys(HealthForm).some((key: string) => {
+    // 检查四个布尔值是否是默认-1
+    const notValidStatus = Object.keys(status).some((key: string) => {
+      if ((key === 'isMask' && status.inHome === 1) || status[key] !== -1) {
+        return false;
+      } else {
+        printError(key);
+        return true;
+      }
+    })
+
+    if (notValidStatus) {
+      return;
+    } else if (status.inHome === 1) {
+      delete status.isMask;
+    }
+
+    // 检查非布尔值
+    const notValid = Object.keys(values).some((key: string) => {
       if (values[key] == null || values[key] === '') {
-        const message = `请${
-          HealthForm[key].isSwitch ? '选择' : '填写'
-        }${
-          HealthForm[key].label
-        }${
-          HealthForm[key].isSwitch ? '': '信息'
-        }`;
-        console.log('message: ', message);
+        printError(key);
         return true;
       }
       return false;
@@ -86,13 +117,23 @@ function postHealth() {
 
     // 如果有数据缺失
     if (notValid) {
-      console.log('values: ', values);
-    } else {
-      // 如果数据正常，发送请求
+      console.log('values: ', { ...values, ...status, createDate: moment().format() });
+      postHealth({ ...values, ...status, createDate: moment().format() });
     }
     
   }
+}
 
+// 输出错误信息
+function printError(key: string) {
+  const message = `请${
+    HealthForm[key].isSwitch ? '选择' : '填写'
+    }${
+    HealthForm[key].label
+    }${
+    HealthForm[key].isSwitch ? '' : '信息'
+    }`;
+  console.log('message: ', message);
 }
 
 
@@ -110,6 +151,8 @@ function Health() {
   // 是否佩戴口罩
   const [maskStatus, setMaskStatus] = useState(-1);
 
+  // 
+
   // 打印消息
   // const [isMessage, printMessage] = useState(false);
   // const [message, setMessage] = useState('');
@@ -120,7 +163,7 @@ function Health() {
     <div className={"health-outer-wrap"}>
       <div className={'health-wrap'}>
         <h1>影子科技员工健康日报</h1>
-        <p className={'now-time'}>{moment().format('YYYY-MM-DD HH:mm')}</p>
+        <p className={'now-time'}>{moment().format('YYYY-MM-DD')}</p>
         {/* { isMessage && <Message message={message} type={messageType}/> } */}
         <div className={'form'} id="form">
           <input className={'input'} name="name" type="text" placeholder="姓名" />
@@ -262,7 +305,10 @@ function Health() {
             </div>
           }
 
-          <button type={'submit'} onClick={() => postHealth()}>提交</button>
+          <button
+            type={'submit'}
+            onClick={() => submitHealth({ bodyStatus, touchStatus, inHome: inhomeStatus, isMask: maskStatus })
+            }>提交</button>
         </div>
       </div>
     </div>
