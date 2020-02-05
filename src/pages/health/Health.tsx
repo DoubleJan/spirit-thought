@@ -1,8 +1,8 @@
 // 健康模块
 // 影子科技健康日报
 import React, { useState } from 'react';
-// import Message from './../../components/message/message';
-// import { MESSAGE_TYPE } from './../../components/message';
+import Message from '../../components/message/Message';
+import { MESSAGE_TYPE } from '../../components/message/index.d';
 import moment from 'moment';
 import * as healthServ from './healthServ';
 import './health.less';
@@ -75,7 +75,7 @@ async function postHealth(values: HealthDetail) {
 }
 
 // 提交方法
-function submitHealth(status: any) {
+function submitHealth(status: any, setIsShowMsg: Function, setMessage: Function) {
 
   const form = document.querySelector('#form');
 
@@ -95,12 +95,14 @@ function submitHealth(status: any) {
       if ((key === 'isMask' && status.inHome === 1) || status[key] !== -1) {
         return false;
       } else {
-        printError(key);
+        setIsShowMsg(true)
+        setMessage(printError(key));
         return true;
       }
     })
 
     if (notValidStatus) {
+
       return;
     } else if (status.inHome === 1) {
       delete status.isMask;
@@ -109,7 +111,9 @@ function submitHealth(status: any) {
     // 检查非布尔值
     const notValid = Object.keys(values).some((key: string) => {
       if (values[key] == null || values[key] === '') {
-        printError(key);
+        setIsShowMsg(true)
+        setMessage(printError(key));
+        setIsShowMsg(false);
         return true;
       }
       return false;
@@ -120,7 +124,7 @@ function submitHealth(status: any) {
       console.log('values: ', { ...values, ...status, createDate: moment().format() });
       postHealth({ ...values, ...status, createDate: moment().format() });
     }
-    
+
   }
 }
 
@@ -133,7 +137,7 @@ function printError(key: string) {
     }${
     HealthForm[key].isSwitch ? '' : '信息'
     }`;
-  console.log('message: ', message);
+  return message;
 }
 
 
@@ -146,17 +150,16 @@ function Health() {
   const [touchStatus, setTouchStatus] = useState(-1);
 
   // 是否在家
-  const [inhomeStatus, setInhomeStatus] = useState(-1);
+  const [inHome, setInHome] = useState(-1);
 
   // 是否佩戴口罩
-  const [maskStatus, setMaskStatus] = useState(-1);
+  const [isMask, setIsMask] = useState(-1);
 
-  // 
+  // 是否显示message
+  const [isShowMsg, setIsShowMsg] = useState(false);
 
-  // 打印消息
-  // const [isMessage, printMessage] = useState(false);
-  // const [message, setMessage] = useState('');
-  // const [messageType, setMessageType]: [MESSAGE_TYPE, Function] = useState(0)
+  // 显示msg的内容
+  const [message, setMessage] = useState('');
 
 
   return (
@@ -164,7 +167,12 @@ function Health() {
       <div className={'health-wrap'}>
         <h1>影子科技员工健康日报</h1>
         <p className={'now-time'}>{moment().format('YYYY-MM-DD')}</p>
-        {/* { isMessage && <Message message={message} type={messageType}/> } */}
+        <Message 
+          show={isShowMsg} 
+          message={message} 
+          type={MESSAGE_TYPE.ERROR} 
+          setShow={setIsShowMsg} 
+        />
         <div className={'form'} id="form">
           <input className={'input'} name="name" type="text" placeholder="姓名" />
           <input className={'input'} name="department" type="text" placeholder="部门" />
@@ -251,24 +259,24 @@ function Health() {
             />
             <div
               className={`boolean-switch switch-true ${
-                inhomeStatus === 1 ? 'to-true' : inhomeStatus === 0 ? 'to-false' : ''
+                inHome === 1 ? 'to-true' : inHome === 0 ? 'to-false' : ''
                 }`}
-              onClick={() => changeStatus(inhomeStatus, setInhomeStatus, 1)}
+              onClick={() => changeStatus(inHome, setInHome, 1)}
             >
               <span>是</span>
             </div>
             <div
               className={`boolean-switch switch-false ${
-                inhomeStatus === 0 ? 'to-true' : inhomeStatus === 1 ? 'to-false' : ''
+                inHome === 0 ? 'to-true' : inHome === 1 ? 'to-false' : ''
                 }`}
-              onClick={() => changeStatus(inhomeStatus, setInhomeStatus, 0)}
+              onClick={() => changeStatus(inHome, setInHome, 0)}
             >
               <span>否</span>
             </div>
           </div>
 
           {
-            inhomeStatus === 0 &&
+            inHome === 0 &&
             <div>
               <div className={'input boolean-wrap'}>
                 <input
@@ -281,17 +289,17 @@ function Health() {
                 />
                 <div
                   className={`boolean-switch switch-true ${
-                    maskStatus === 1 ? 'to-true' : maskStatus === 0 ? 'to-false' : ''
+                    isMask === 1 ? 'to-true' : isMask === 0 ? 'to-false' : ''
                     }`}
-                  onClick={() => changeStatus(maskStatus, setMaskStatus, 1)}
+                  onClick={() => changeStatus(isMask, setIsMask, 1)}
                 >
                   <span>是</span>
                 </div>
                 <div
                   className={`boolean-switch switch-false ${
-                    maskStatus === 0 ? 'to-true' : maskStatus === 1 ? 'to-false' : ''
+                    isMask === 0 ? 'to-true' : isMask === 1 ? 'to-false' : ''
                     }`}
-                  onClick={() => changeStatus(maskStatus, setMaskStatus, 0)}
+                  onClick={() => changeStatus(isMask, setIsMask, 0)}
                 >
                   <span>否</span>
                 </div>
@@ -307,8 +315,10 @@ function Health() {
 
           <button
             type={'submit'}
-            onClick={() => submitHealth({ bodyStatus, touchStatus, inHome: inhomeStatus, isMask: maskStatus })
-            }>提交</button>
+            onClick={() =>
+              submitHealth({ bodyStatus, touchStatus, inHome, isMask }, setIsShowMsg, setMessage)
+            }
+          >提交</button>
         </div>
       </div>
     </div>

@@ -1,0 +1,53 @@
+@import './../../colors.less';
+
+@keyframes showMsg {
+  0% {
+    top: -2rem;
+    opacity: 0;
+  }
+
+  20% {
+
+    top: 0;
+    opacity: 1;
+  }
+
+  80% {
+
+    top: 0;
+    opacity: 1;
+  }
+
+  100% {
+    top: -2rem;
+    opacity: 0;
+
+  }
+}
+
+
+.message-wrap {
+  position: absolute;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  animation: showMsg 2s forwards;
+
+  p {
+    padding: 1rem;
+    background-color: #fff;
+    color: @CONTENT_COLOR;
+    border-radius: 100rem;
+    box-shadow: 0rem .4rem 1rem 0 rgba(65, 47, 47, 0.2);
+    margin: 1rem;
+    letter-spacing: 0.1rem;
+
+    //对超出内容隐藏
+    overflow: hidden;
+    //  显示省略符号来代表被修剪的文本
+    text-overflow: ellipsis;
+    // 最多一行
+    white-space: nowrap;
+    
+  }
+}
