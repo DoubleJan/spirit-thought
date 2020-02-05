@@ -24,7 +24,6 @@
   line-height: 4rem;
   padding: 0 1rem;
   padding-bottom: 1rem;
-  // border-bottom: @LINE_COLOR solid 1px;
 
   // header标题的包裹元素
   .header-title-wrap {
@@ -109,6 +108,43 @@
     }
   }
 }
+
+// health页面的样式
+.health-header-title-wrap {
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  cursor: pointer;
+
+  img, p {
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  img {
+    width: 3rem;
+  }
+  
+  p {
+    font-size: 2rem;
+    font-family: WGTitle;
+  }
+}
+
+.health-header-title-wrap:hover {
+  color: @THEME_COLOR;
+  transition: all .2s;
+}
+
+// 如果是health页面，1000px以下，不显示左上角网站名称和logo
+@media screen and (max-width: 1000px) {
+  .health-header-title-wrap {
+    display: none;
+  }
+}
+
+
+
 
 // 900px以下，不显示admin路由
 @media screen and (max-width: 900px) {

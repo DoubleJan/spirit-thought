@@ -21,7 +21,8 @@ function App() {
   return (
     <HashRouter>
       <div className="App">
-        {!href.includes('health') && <Header />}
+        {/* {!href.includes('health') && <Header />} */}
+        <Header />
         <div className={`${href.includes('/health') ? '' : 'page-body'}`}>
           <Switch>
             <Route exact path="/" component={Home} />
