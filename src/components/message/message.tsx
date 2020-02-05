@@ -14,8 +14,11 @@ function Message ({ message, type, show, setShow }:
         className={`message-wrap`} 
         onAnimationEnd={() => setShow(false)}
         onAnimationStart={() => console.warn(`${type}: ${message}`)}
-      >
-        <p>{message}</p>
+      >  
+        <div className={'msg-body'}>
+           <img className={'message-icon'} src={`/assets/icons/${type.toLowerCase()}.svg`} alt=""/>
+           <span>{message}</span>
+        </div>
       </div>
     ) : null
   )

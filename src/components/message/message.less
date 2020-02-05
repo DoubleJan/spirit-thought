@@ -33,14 +33,17 @@
   justify-content: center;
   animation: showMsg 2s forwards;
 
-  p {
+  .msg-body {
     padding: 1rem;
     background-color: #fff;
     color: @CONTENT_COLOR;
     border-radius: 100rem;
-    box-shadow: 0rem .4rem 1rem 0 rgba(65, 47, 47, 0.2);
+    box-shadow: 0rem .4rem 1rem 0 rgba(65, 47, 47, 0.3);
     margin: 1rem;
     letter-spacing: 0.1rem;
+
+    display: flex;
+    align-items: center;
 
     //对超出内容隐藏
     overflow: hidden;
@@ -48,6 +51,14 @@
     text-overflow: ellipsis;
     // 最多一行
     white-space: nowrap;
-    
+
+
+    img {
+      width: 1.4rem;
+      height: 1.4rem;
+      margin-right: 0.2rem;
+    }
   }
+
+  
 }

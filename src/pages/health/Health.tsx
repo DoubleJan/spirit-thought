@@ -3,19 +3,12 @@
 import React, { useState } from 'react';
 import Message from '../../components/message/Message';
 import { MESSAGE_TYPE } from '../../components/message/index.d';
+import { HealthFormType, HealthDetail, Input } from './index.d';
 import moment from 'moment';
 import * as healthServ from './healthServ';
 import './health.less';
 
-// import * as dd from 'dingtalk-jsapi';
-// import { IRuntimePermissionRequestAuthCodeParams } from 'dingtalk-jsapi/api/apiObj'
-
-// 企业id
-// const CORPID = 'ding4251f83bbbbbf638a1320dcb25e91351';
-
-// 表单字段对照表
-// label中文 value值 isSwitch是否是布尔组件
-
+// 信息提示的模板对象
 const HealthForm: HealthFormType = {
   'name': { label: '姓名' },
   'department': { label: '部门' },
@@ -29,28 +22,6 @@ const HealthForm: HealthFormType = {
   'activityInfo': { label: '外出活动范围与事项', need: 'inHome' }
 }
 
-interface Field {
-  label: string;
-  isSwitch?: boolean;
-  need?: string;
-}
-
-interface HealthFormType {
-  [props: string]: Field
-}
-
-interface HealthDetail {
-  'name': string,
-  'department': string,
-  'address': string,
-  'bodyStatus': boolean,
-  'bodyExp'?: string,
-  'touchStatus': boolean,
-  'touchExp'?: string,
-  'inHome': boolean,
-  'isMask'?: boolean,
-  'activityInfo'?: string
-}
 
 // 改变状态
 function changeStatus(status: number, set: Function, defaultStatus: number) {
@@ -61,12 +32,7 @@ function changeStatus(status: number, set: Function, defaultStatus: number) {
   }
 }
 
-interface InputName {
-  name: string
-  [props: string]: any
-}
 
-type Input = Node & InputName & Element;
 
 // 发送提交表单请求
 async function postHealth(values: HealthDetail) {
@@ -102,7 +68,6 @@ function submitHealth(status: any, setIsShowMsg: Function, setMessage: Function)
     })
 
     if (notValidStatus) {
-
       return;
     } else if (status.inHome === 1) {
       delete status.isMask;
