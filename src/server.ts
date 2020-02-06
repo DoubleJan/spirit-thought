@@ -1,11 +1,12 @@
-import axios from 'axios';
-import { Method } from 'axios';
-
+import axios, { Method } from 'axios';
+import Constants from './constants';
 
 // 一个axios实例
 const server = axios.create({
-  baseURL: 'http://localhost:9000'
+  baseURL: Constants.baseURL
 });
+
+console.log('Constants', Constants);
 
 // 数据请求
 function request({ url, params, headers, method }: 
