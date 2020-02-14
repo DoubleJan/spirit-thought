@@ -7,7 +7,6 @@ import { DirectoryList, NoteList } from './../../components/list';
 // 获取笔记分类目录
 async function getNoteDirectory(cb: Function) {
   const res = await noteServ.getNoteDirectory();
-  console.log('res: ', res);
   cb(res);
 }
 
