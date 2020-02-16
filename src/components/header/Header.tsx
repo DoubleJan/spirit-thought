@@ -11,14 +11,14 @@ function Header() {
   // location.pathname.includes('health') ? null :
   return location.pathname.includes('health') ? (
     <div className={'health-header-title-wrap'} onClick={() => history.push('/')}>
-      <img src="/assets/img/fire-active.svg" alt="" />
+      <img src="/assets/img/fire.svg" alt="" />
       <p className={"health-header-title"}>灵思</p>
     </div>
   ) : (
       (
         <header className={'header-wrap'}>
           <div className={'header-title-wrap'} onClick={() => history.push('/')}>
-            <img src="/assets/img/fire-active.svg" alt="" />
+            <img src="/assets/img/fire.svg" alt="" />
             <p className={"header-title"}>灵思</p>
           </div>
 

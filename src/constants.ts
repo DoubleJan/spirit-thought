@@ -3,13 +3,13 @@
 // 根据环境选择不同的公共值
 const Constants = {
   development: {
-    baseURL: 'http://localhost:9000'
+    baseURL: 'http://localhost:9000/api'
   },
   production: {
-    baseURL: 'http://116.62.44.86:9000'
+    baseURL: 'http://spirithought.net/api'
   },
   test: {
-    baseURL: 'http://localhost:9000'
+    baseURL: 'http://localhost:9000/api'
   }
 }
 

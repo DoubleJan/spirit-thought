@@ -3,10 +3,11 @@ import Constants from './constants';
 
 // 一个axios实例
 const server = axios.create({
-  baseURL: Constants.baseURL
+  baseURL: Constants.baseURL,
+  headers: {
+    'Cache-Control': 'max-age=0'
+  }
 });
-
-console.log('Constants', Constants);
 
 // 数据请求
 function request({ url, params, headers, method }: 
@@ -18,7 +19,13 @@ function request({ url, params, headers, method }:
     p = params;
   }
 
-  return server({ url, params: p, data: params, method: m }).then((res) => res.data);
+  return server({ 
+    url, 
+    params: p, 
+    data: params, 
+    method: m, 
+    headers
+  }).then((res) => res.data);
 }
 
 
