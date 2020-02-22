@@ -5,17 +5,13 @@ import { DirectoryList } from './index';
 
 function Menu({ directoryList }: { directoryList: DirectoryList }) {
 
-  const [activeStatus, setActiveStatus] = useState(-1);
-
   return (
     <div className={"list-menu-wrap"}>
       {
         Array.isArray(directoryList) && directoryList.map((item, index) => (
           <div
-            className={`menu-item ${activeStatus === index ? 'actived-menu' : ''}`}
+            className={`menu-item`}
             key={index}
-            onMouseOver={() => setActiveStatus(index)}
-            onMouseOut={() => setActiveStatus(-1)}
           >
             {item.name}
           </div>

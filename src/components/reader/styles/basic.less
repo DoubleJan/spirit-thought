@@ -1,0 +1,197 @@
+// 定义reader组件内，markdown文件的基础样式
+@import './../../../colors.less';
+
+.markdown-reader {
+
+  width: 60rem;
+  background-color: #fff;
+  padding: 2rem;
+  text-align: justify;
+
+  p, span, li, td, th {
+    // 由于字重比较小，颜色要用深一点的，适当调大正文的字号和行高，
+    color: @TITLE_COLOR;
+    line-height: 2rem;
+    font-size: 1.2rem;
+    font-weight: 200;
+  }
+
+  // 段间距
+  p, pre, ul, ol, table, blockquote, figure {
+    margin: 1rem 0;
+  }
+
+  // 标题为更重的普通标题色
+  h1, h2, h3, h4, h5, h6 {
+    color: @SPECIAL_TITLE_COLOR;
+  }
+
+  
+  // 一级标题 也是文章的总的大标题，只能有一个，正文标题从二级开始
+  h1 {
+    font-size: 3.4rem;
+    font-weight: 900;
+    line-height: 6rem;
+    margin-bottom: 10rem;
+    text-align: center;
+    margin-top: 3rem;
+  }
+
+  // 二级标题，正文常用作为一级标题
+  h2 {
+    font-size: 2.8rem;
+    font-weight: 700;
+    line-height: 8rem;
+    margin-top: 2.6rem;
+  }
+
+  // 三级标题
+  h3 {
+    font-size: 2.2rem;
+    font-weight: 600;
+    line-height: 6rem;
+    margin-top: 1.2rem;
+  }
+
+  // 四级标题
+  h4 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    line-height: 4.4rem;
+
+  }
+
+  h5 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    line-height: 3.4rem;
+
+  }
+
+  h6 {
+    font-size: 1.3rem;
+    font-weight: 500;
+    line-height: 3rem;
+  }
+
+  // 行内代码
+  code {
+    background-color: @INLINE_CODE_BACKGROUND;
+    color: @INLINE_CODE_COLOR;
+    padding: 0rem 0.2rem;
+    font-family: Consolas, "PingFang SC", "Segoe UI", "Microsoft YaHei", sans-serif, monospace;
+  }
+
+  // 代码区块
+  figure {
+    overflow-x: auto;
+    padding: 1rem;
+    background-color: rgba(253, 253, 253);
+  }
+  pre {
+    background-color: @BACKGROUND_COLOR;
+    padding: 1rem;
+    margin: 0;
+  }
+
+  // 重置区块内代码的字色和背景色
+  pre code {
+    background: none;
+    font-size: 1.2rem;
+    color: @TITLE_COLOR;
+    padding: 0;
+  }
+
+  // 无序列表
+  ul {
+    margin-left: 2rem;
+
+    li {
+      list-style: disc inside;
+    }
+  }
+
+  // 有序列表
+  ol {
+    margin-left: 2rem;
+
+    li {
+      list-style: decimal inside;
+    }
+  }
+
+  // 表格
+  table {
+    width: 100%;
+    td, th {
+      border: 1px solid @TABLE_BORDER;
+      padding: 0.6rem;
+    }
+
+    td {
+      text-align: justify;
+    }
+
+    th {
+      text-align: center;
+      font-weight: 600;
+    }
+  }
+
+  // strong标签加粗
+  strong {
+    font-weight: 600;
+    padding: 0 0.1rem;
+  }
+
+  // 斜体，由于字体向右倾斜，因此给左右加一个内边距
+  em {
+    font-style: italic;
+    padding-right: 0.26rem;
+    padding-left: 0.12rem;
+  }
+
+  // 引用
+  blockquote {
+    background-color: @BACKGROUND_COLOR;
+    border-left: @DEEP_BACKGROUND_COLOR 0.6rem solid;
+    margin: 1rem 0;
+    padding: 0.1rem 1rem;
+
+    p {
+      color: @COMMENT_COLOR;
+    }
+  }
+
+  // 链接
+  a {
+    text-decoration: solid;
+    border-bottom: solid @THEME_COLOR 1px;
+    color: @THEME_COLOR;
+    padding: 0.1rem;
+    margin: 0 0.3rem;
+  }
+
+  // 鼠标悬浮状态
+  a:hover {
+    padding: 0.1rem 0.4rem;
+    margin: 0;
+    margin-left: 0.3rem;
+    transition: .4s all;
+    // border-radius: 1rem;
+  }
+  // 鼠标移开状态
+  a:not(:hover) {
+    padding: 0.1rem;
+    margin: 0 0.3rem;
+    transition: .2s all;
+  }
+
+  // 图片
+  img {
+    width: 100%;
+  }
+
+
+}
+

@@ -2,17 +2,20 @@
 
 import React from 'react';
 import moment from 'moment';
-import { Note } from './index';
+import { Note, RouterPath } from './index';
 
 import './styles.less';
+import { useHistory } from 'react-router';
 
 // item包括
 // 文件夹图片 ：文章标题
 // 我文章简述
 // 作者，文件夹，分类标签，发布时间
-function ListItem({ note }: { note: Note }) {
+function ListItem({ note, routerPath }: { note: Note, routerPath: RouterPath }) {
+  const history = useHistory();
+
   return (
-    <div className={'list-item-wrap'}>
+    <div className={'list-item-wrap'} onClick={() => history.push(routerPath)}>
       <div className={"item-title"}>
         <div className={"item-img-wrap"}><img src="/assets/img/logo.svg" alt="" /></div>
         <p>{note.title || '--'}</p>

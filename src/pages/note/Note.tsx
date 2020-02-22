@@ -17,7 +17,7 @@ async function getNoteList(cb: Function) {
 }
 
 function Note() {
-
+  
   const [directoryList, setDirectoryList]: [DirectoryList, Function] = useState([]);
   const [noteList, setNoteList]: [NoteList, Function] = useState([]);
 
@@ -37,7 +37,7 @@ function Note() {
   }, [])
 
   return (
-    <ListView { ...{ directoryList, noteList } } />
+    <ListView { ...{ directoryList, noteList, routerPath: '/note/reader' } } />
   )
 }
 

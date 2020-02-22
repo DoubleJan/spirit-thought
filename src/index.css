@@ -1,13 +1,14 @@
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', "PingFang SC", "Microsoft YaHei",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   min-width: 240px;
   min-height: 100vh;  
   position: relative;
+  overflow-x: hidden;
 }
 
 .page-body {
@@ -15,8 +16,9 @@ body {
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+    font-family: Consolas, source-code-pro, Menlo, Monaco, 
+      "PingFang SC", "Segoe UI", "Microsoft YaHei", 
+      sans-serif, monospace;
 }
 
 /* 移动端 600px以下，没有footer，显示bottom-nav */

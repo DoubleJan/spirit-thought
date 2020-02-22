@@ -28,6 +28,9 @@ export interface Note {
   [props: string]: string;
 }
 
+// 点击文章
+export type RouterPath = '/note/reader' | '/article/reader';
+
 // 笔记列表数组
 export type NoteList = array<Note>
 

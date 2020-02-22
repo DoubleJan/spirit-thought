@@ -46,8 +46,16 @@
     font-weight: 200;
     cursor: pointer;
 
-    &.actived-menu {
-      animation: activedMenu .4s forwards;
+    // 鼠标移入时左缩进
+    &:hover {
+      margin-left: 1rem;
+      transition: .4s all;
+    }
+
+    // 鼠标移开时恢复
+    &:not(:hover) {
+      margin-left: 0;
+      transition: .2s all;
     }
   }
 }
@@ -63,6 +71,11 @@
   // hover时，外阴影
   &:hover {
     box-shadow: 0rem .1rem 1rem 0rem rgba(0, 0, 0, 0.08);
+    transition: .2s all;
+  }
+  &:not(:hover) {
+    box-shadow: none;
+    transition: .2s all;
   }
 
   // 头部标题，flex左对齐
