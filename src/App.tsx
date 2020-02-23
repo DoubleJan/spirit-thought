@@ -1,5 +1,5 @@
 import React from 'react';
-import { HashRouter, Route, Switch, Redirect } from 'react-router-dom';
+import { HashRouter, Route, Switch, Redirect, BrowserRouter } from 'react-router-dom';
 
 import Header from './components/header/Header';
 import Footer from './components/footer/Footer';
@@ -21,7 +21,7 @@ function App() {
   const href = window.location.href;
 
   return (
-    <HashRouter>
+    <BrowserRouter>
       <div className="App">
         <Header />
         <div className={`${href.includes('/health') ? '' : 'page-body'}`}>
@@ -39,7 +39,7 @@ function App() {
         <Footer />
         {!href.includes('health') && <BottomNav />}
       </div>
-    </HashRouter>
+    </BrowserRouter>
   );
 }
 

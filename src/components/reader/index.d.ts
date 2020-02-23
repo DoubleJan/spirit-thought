@@ -11,7 +11,52 @@ interface SyntaxLang {
   [props: string]: any;
 }
 
+// react-markdown组件的heading传值类型
+interface HeadingProps extends DirectoryFunction {
+  level: string;
+  children: Array<Child>;
+  [props: string]: any
+}
+
+interface Child {
+  props: { value: string };
+  [p: string]: any;
+}
+
+interface SingleHeadingProps {
+  level: string;
+  id: string;
+  child?: Child;
+  [props: string]: any;
+}
+
+// 目录的类型定义
+interface DirectoryType {
+  level: HeadingLevel;
+  title: string;
+}
+
+interface DirectoryFunction {
+  pushDirectory: (dir: DirectoryType) => void;
+  getDirectory: () => DirectoryList;
+}
+
+interface DirectoryContent {
+  content: string;
+}
+
+type DirectoryList = Array<DirectoryType>;
+type HeadingLevel = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' |'h6';
+
+
 export {
   CodeProps,
-  SyntaxLang
+  SyntaxLang,
+  HeadingProps,
+  SingleHeadingProps,
+  DirectoryList,
+  DirectoryType,
+  HeadingLevel,
+  DirectoryFunction,
+  DirectoryContent
 }

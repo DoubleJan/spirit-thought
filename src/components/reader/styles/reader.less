@@ -4,6 +4,68 @@
 .reader-wraper {
   display: flex;
   justify-content: center;
-
+  align-items: flex-start;
   background-color: @BACKGROUND_COLOR;
+}
+
+.reader-directory-wrapper {
+  width: 16rem;
+  // border: red solid 1px;
+  margin-top: 1rem;
+  padding: 0.4rem 0;
+  margin-right: 1rem;
+  background: #fff;
+
+  .levels-directory {
+    padding: 0.6rem 1.4rem;
+    color: @TITLE_COLOR;
+    cursor: pointer;
+  }
+
+  .levels-directory:hover {
+    color: @THEME_COLOR;
+    transition: .4s all;
+  }
+
+  .levels-directory:not(:hover) {
+    color: @TITLE_COLOR;
+    transition: .2s all;
+  }
+
+  .h2-level:not(:hover) {
+    color: @SPECIAL_TITLE_COLOR;
+    transition: .2s all;
+  }
+  
+
+  .h1-level:first-of-type {
+    font-size: 1.2rem;
+    font-weight: 700;
+    border-bottom: @BORDER_COLOR solid 1px;
+    padding-bottom: 1.1rem;
+    margin-bottom: 1rem;
+    color: @THEME_COLOR;
+  }
+
+  .h2-level {
+    padding-left: 1rem;
+    color: @SPECIAL_TITLE_COLOR;
+    font-weight: 600;
+  }
+
+  .h3-level {
+    padding-left: 2rem;
+  }
+
+  .h4-level {
+    padding-left: 3rem;
+  }
+
+  .h5-level {
+    padding-left: 4rem;
+  }
+
+  .h6-level {
+    padding-left: 5rem;
+  }
 }

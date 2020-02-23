@@ -6,6 +6,7 @@
   width: 60rem;
   background-color: #fff;
   padding: 2rem;
+  margin-top: 1rem;
   text-align: justify;
 
   p, span, li, td, th {
@@ -23,52 +24,63 @@
 
   // 标题为更重的普通标题色
   h1, h2, h3, h4, h5, h6 {
-    color: @SPECIAL_TITLE_COLOR;
+    text-align: left;
+    a span {
+      color: @SPECIAL_TITLE_COLOR;
+    }
   }
 
-  
+  h1 {
+    text-align: center;
+  }
+
   // 一级标题 也是文章的总的大标题，只能有一个，正文标题从二级开始
   h1 {
-    font-size: 3.4rem;
-    font-weight: 900;
-    line-height: 6rem;
     margin-bottom: 10rem;
-    text-align: center;
     margin-top: 3rem;
+    a span {
+      font-size: 3.4rem;
+      font-weight: 900;
+      line-height: 6rem;
+    }
   }
 
   // 二级标题，正文常用作为一级标题
   h2 {
-    font-size: 2.8rem;
-    font-weight: 700;
-    line-height: 8rem;
-    margin-top: 2.6rem;
+     a span {
+      font-size: 2.8rem;
+      font-weight: 700;
+      line-height: 8rem;
+     }
+    margin-top: 10rem;
   }
 
   // 三级标题
   h3 {
-    font-size: 2.2rem;
-    font-weight: 600;
-    line-height: 6rem;
-    margin-top: 1.2rem;
+     a span {
+      font-size: 2.2rem;
+      font-weight: 600;
+      line-height: 6rem;
+     }
+    margin-top: 3rem;
   }
 
   // 四级标题
-  h4 {
+  h4 a span {
     font-size: 1.8rem;
     font-weight: 600;
     line-height: 4.4rem;
 
   }
 
-  h5 {
+  h5 a span {
     font-size: 1.5rem;
     font-weight: 600;
     line-height: 3.4rem;
 
   }
 
-  h6 {
+  h6 a span {
     font-size: 1.3rem;
     font-weight: 500;
     line-height: 3rem;
@@ -88,6 +100,7 @@
     padding: 1rem;
     background-color: rgba(253, 253, 253);
   }
+
   pre {
     background-color: @BACKGROUND_COLOR;
     padding: 1rem;
@@ -190,6 +203,18 @@
   // 图片
   img {
     width: 100%;
+  }
+
+  // 带链接的标题，清除链接样式
+  .reader-heading-wrap {
+    a {
+      text-decoration: none;
+      border-bottom: none;
+      color: @TITLE_COLOR;
+      padding: none;
+      margin: none;
+    }
+
   }
 
 

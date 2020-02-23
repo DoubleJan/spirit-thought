@@ -4,8 +4,8 @@ import { PrismLight as SyntaxHightlighter } from "react-syntax-highlighter";
 // 设置高亮样式
 import { coy } from 'react-syntax-highlighter/dist/esm/styles/prism';
 // 设置支持的语言
-import syntaxLang from './syntaxLang';
-import { CodeProps } from './index.d';
+import syntaxLang from '../syntaxLang';
+import { CodeProps } from '..';
 
 function CodeBlock(config: CodeProps) {
   
