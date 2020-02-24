@@ -34,7 +34,8 @@ function Note() {
       }
     })
     
-  }, [])
+  }, []);
+
 
   return (
     <ListView { ...{ directoryList, noteList, routerPath: '/note/reader' } } />

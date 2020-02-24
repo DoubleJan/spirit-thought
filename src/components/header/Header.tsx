@@ -7,8 +7,7 @@ import './header.less';
 function Header() {
   const history = useHistory();
   const location = useLocation();
-  console.log('location: ', location);
-  // location.pathname.includes('health') ? null :
+
   return location.pathname.includes('health') ? (
     <div className={'health-header-title-wrap'} onClick={() => history.push('/')}>
       <img src="/assets/img/fire.svg" alt="" />

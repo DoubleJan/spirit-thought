@@ -16,7 +16,7 @@ function ListItem({ note, routerPath }: { note: Note, routerPath: RouterPath }) 
   const history = useHistory();
 
   return (
-    <div className={'list-item-wrap'} onClick={() => history.push(routerPath)}>
+    <div className={'list-item-wrap'} onClick={() => history.push(`${routerPath}?url=${note.url}`)}>
       <div className={"item-title"}>
         <div className={"item-img-wrap"}><img src="/assets/img/logo.svg" alt="" /></div>
         <p>{note.title || '--'}</p>

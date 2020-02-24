@@ -7,29 +7,23 @@ import toc from 'remark-toc';
 
 import CodeBlock from './code/CodeBlock';
 import HeadingBlock from './heading/HeadingBlock';
-import helper from '../../resource/helper';
-import Directory from './directory/Directory';
 import HeadingDirectory from './directory/HeadingDirectory';
 
 import './styles/basic.less';
 import './styles/reader.less';
 
-
-function Reader() {
-  // const { getDirectory, pushDirectory } = Directory();
-  const directory = Directory();
+function Reader({ content }: { content: string }) {
 
   return (
     <div className={'reader-wraper'}>
-      <HeadingDirectory content={helper}/>
+      <HeadingDirectory content={content} />
       <Markdown
         className={'markdown-reader'}
-        source={helper}
+        source={content}
         escapeHtml={false}
-        renderers={{ code: CodeBlock, heading:  (props) => <HeadingBlock {...{...directory, ...props}} /> }}
+        renderers={{ code: CodeBlock, heading: HeadingBlock }}
         plugins={[toc]}
       />
-
     </div>
   )
 }

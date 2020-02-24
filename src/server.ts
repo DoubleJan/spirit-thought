@@ -10,19 +10,20 @@ const server = axios.create({
 });
 
 // 数据请求
-function request({ url, params, headers, method }: 
-    { url: string, params?: any, headers?: any, method: Method }) {
+function request({ url, data, headers, method }: 
+    { url: string, data?: any, headers?: any, method: Method }) {
 
   const m = method.toLowerCase() as Method;
-  let p;
+  
+  let params;
   if (m === 'get' || m === 'patch') {
-    p = params;
+    params = data;
   }
 
   return server({ 
     url, 
-    params: p, 
-    data: params, 
+    data,
+    params,
     method: m, 
     headers
   }).then((res) => res.data);
