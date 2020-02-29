@@ -9,22 +9,26 @@ import CodeBlock from './code/CodeBlock';
 import HeadingBlock from './heading/HeadingBlock';
 import HeadingDirectory from './directory/HeadingDirectory';
 
+import Spin from '../spin/Spin';
+
 import './styles/basic.less';
 import './styles/reader.less';
 
 function Reader({ content }: { content: string }) {
 
   return (
-    <div className={'reader-wraper'}>
-      <HeadingDirectory content={content} />
-      <Markdown
-        className={'markdown-reader'}
-        source={content}
-        escapeHtml={false}
-        renderers={{ code: CodeBlock, heading: HeadingBlock }}
-        plugins={[toc]}
-      />
-    </div>
+    <Spin spinning={true}>
+      <div className={'reader-wraper'}>
+        <HeadingDirectory content={content} />
+        <Markdown
+          className={'markdown-reader'}
+          source={content}
+          escapeHtml={false}
+          renderers={{ code: CodeBlock, heading: HeadingBlock }}
+          plugins={[toc]}
+        />
+      </div>
+    </Spin>
   )
 }
 
