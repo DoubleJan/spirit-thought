@@ -12,6 +12,7 @@ import Code from './pages/code/Code';
 
 import Admin from './pages/admin/Admin';
 import Health from './pages/health/Health';
+import Login from './pages/login/Login';
 
 import ReadPage from './pages/readPage/readPage';
 
@@ -32,6 +33,7 @@ function App() {
             <Route exact path="/code" component={Code} />
             <Route exact path="/health" component={Health} />
             <Route exact path="/admin" component={Admin} />
+            <Route exact path="/login" component={Login} />
             <Route exact path={['/note/reader', '/article/reader']} component={ReadPage} />
             <Redirect to="/" />
           </Switch>

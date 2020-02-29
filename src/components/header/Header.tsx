@@ -8,7 +8,7 @@ function Header() {
   const history = useHistory();
   const location = useLocation();
 
-  return location.pathname.includes('health') ? (
+  return location.pathname.includes('health') || location.pathname.includes('login') ? (
     <div className={'health-header-title-wrap'} onClick={() => history.push('/')}>
       <img src="/assets/img/fire.svg" alt="" />
       <p className={"health-header-title"}>灵思</p>

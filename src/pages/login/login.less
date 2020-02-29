@@ -1,0 +1,152 @@
+// login组件的样式文件
+
+@import '../../colors.less';
+
+// 登录页包裹元素
+.login-wrapper {
+
+  // 外部包裹元素flex布局，内部登录组件上下左右居中
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 3.25rem);
+  background-color: @BACKGROUND_COLOR;
+}
+
+.login-outer {
+  padding: 2rem;
+  background-color: #fff;
+  width: 30rem;
+  margin-top: -2rem;
+
+  .login-title {
+    font-size: 2rem;
+    font-weight: 800;
+    letter-spacing: 0.4rem;
+    color: @THEME_COLOR;
+    text-align: center;
+  }
+}
+
+// 输入框包裹元素
+.login-inner {
+  width:100%;
+  padding: 2rem;
+  box-sizing: border-box;
+
+  .login-input {
+    margin: 1rem 0;
+  }
+
+  input {
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 1.2rem;
+    padding: 1rem;
+    border-radius: 0.2rem;
+    border: 1px solid @BORDER_COLOR;
+  }
+
+  // 针对chrome，firefox，ie设置placeholder颜色
+  input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
+    color: @LITLE_COLOR;
+  }
+
+  input:-ms-input-placeholder, textarea::-webkit-input-placeholder {
+    color: @LITLE_COLOR;
+  }
+
+  input::-moz-placeholder, textarea::-webkit-input-placeholder {
+    color: @LITLE_COLOR;
+  }
+
+  // 登录按钮样式
+  .login-button {
+    width: 100%;
+    font-size: 1.2rem;
+    line-height: 3rem;
+    letter-spacing: 0.2rem;
+    border-radius: 0.2rem;
+    border: none;
+    margin-top: 1rem;
+    color: #fff;
+    cursor: pointer;
+    background-color: @THEME_COLOR;
+    outline: none;
+  }
+
+  // hover时颜色更亮，左右边框半圆
+  .login-button:hover {
+    background-color: @THEME_LIGHT_COLOR;
+    border-radius: 2rem;
+    transition: .6s all;
+  }
+
+  // 鼠标移开后，样式变回去
+  .login-button:not(:hover) {
+    background-color: @THEME_COLOR;
+    border-radius: 0.2rem;
+    transition: .2s all;
+  }
+
+  // 鼠标按下后颜色变深
+  .login-button:active {
+    background-color: @THEME_DEEP_COLOR;
+    transition: .2s all;
+  }
+
+  // input输入框获取焦点时的样式
+  input:focus {
+    border: 1px solid @THEME_COLOR;
+    transition: .4s all;
+    box-shadow: 0 0 .2rem 0 @THEME_COLOR;
+  }
+
+  .remarks {
+    margin-top: 0.8rem;
+    display: flex;
+    justify-content: space-between;
+
+    // 按钮下方的注册和重置密码按钮样式
+    span {
+      font-size: 0.8rem;
+      font-weight: 200;
+      color: @COMMENT_COLOR;
+      letter-spacing: 0.1rem;
+      cursor: pointer;
+      line-height: 1.4rem;
+    }
+
+    span:hover {
+      color: @THEME_COLOR;
+      transition: .4s all;
+    }
+
+    span:not(:hover) {
+      color: @COMMENT_COLOR;
+      transition: .2s all;
+    }
+
+    // 注册和重置密码前的小图标
+    img {
+      width: 1.2rem;
+      margin-right: 0.1rem;
+      vertical-align: middle;
+    }
+
+    .lagger {
+      width: 1.4rem;
+    }
+    .smaller {
+      width: 1.2rem;
+      margin-top: -0.2rem;
+    }
+  }
+
+
+
+}
+
+
+
+
