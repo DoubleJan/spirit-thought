@@ -1,6 +1,6 @@
 // 全局信息提示框
 import React from 'react';
-import { MESSAGE_TYPE } from './index.d';
+import { MESSAGE_TYPE } from '.';
 import './message.less';
 
 // 接收message
