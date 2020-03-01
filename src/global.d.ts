@@ -6,3 +6,9 @@
 //     spinning?: boolean;
 //   }
 // }
+
+interface Response extends Promise<any> {
+  code: string;
+  msg: string;
+  data?: any
+}

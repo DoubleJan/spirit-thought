@@ -1,9 +1,9 @@
 // 定义环境常量
 // localstorage存储键名
 const storage = {
-  username: 'USERNAME',
-  password: 'PASSWORD',
-  email: 'EMAIL'
+  username: 'SPIRITHOUGHT_USERNAME',
+  password: 'SPIRITHOUGHT_PASSWORD',
+  email: 'SPIRITHOUGHT_EMAIL'
 }
 
 
@@ -19,10 +19,9 @@ const Constants = {
     storage
   },
   test: {
-    baseURL: 'http://localhost:9000',
+    baseURL: 'http://localhost:8000',
     storage
   }
 }
 
-
-export default Constants[process.env.NODE_ENV];
+export default Constants[process.env.NODE_ENV]

@@ -143,6 +143,42 @@
     }
   }
 
+  // 许可号
+  .licence-wrap {
+    display: flex;
+    input {
+      width: calc(100% - 8rem + 4px);
+    }
+    button {
+      width: 8rem;
+      background-color: @THEME_COLOR;
+      border: none;
+      outline: none;
+      color: #fff;
+      cursor: pointer;
+      border-radius: 0 .2rem .2rem 0;
+      box-sizing: border-box;
+      margin-left: -4px;
+      font-size: 1.2rem;
+      letter-spacing: 0.1rem;
+    }
+
+    button:hover {
+      background-color: @THEME_LIGHT_COLOR;
+      transition: .6s all;
+    }
+
+    button:not(:hover) {
+      background-color: @THEME_COLOR;
+      transition: .2s all;
+    }
+
+    button:active {
+      background-color: @THEME_DEEP_COLOR;
+      transition: .4s all;
+    }
+  }
+
 
 
 }

@@ -13,7 +13,15 @@ export interface LoginComponent {
   username: string;
   password: string;
   confirmPassword?: string;
+  identify: string;
   [props: string]: string;
+}
+
+// 获取许可号的类型定义
+export interface LicenceType {
+  email: string;
+  username: string;
+  remark?: string;
 }
 
 export type LoginType = 'login' | 'register' | 'resetPwd';

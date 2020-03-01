@@ -8,3 +8,12 @@ export async function postLogin(params?: any) {
     method: 'POST'
   });
 }
+
+// 获取注册许可号
+export async function getLience(params: any) {
+  return request({
+    url: `/api/auth/licence?type=requestLicence`,
+    data: params,
+    method: 'GET'
+  })
+}
