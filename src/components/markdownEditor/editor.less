@@ -1,0 +1,112 @@
+// 编辑器样式
+@import '~@/colors.less';
+
+// 内部两个编辑框的包裹元素样式
+.markdown-editor-wrap {
+  display: flex;
+  align-items: stretch;
+}
+
+.editor-wrap, .review-wrap {
+  flex-basis: 50%;
+}
+
+// react-codemirror2 组件样式
+.editor-wrap {
+  overflow-y: auto;
+  height: calc(100vh - 5rem);
+  font-size: 1.2rem;
+  border-right: 1px solid @LINE_COLOR;
+  
+  .react-codemirror2 {
+    display: flex;
+    height: 100%;
+  }
+  .CodeMirror {
+    width: 100%;
+    height: 100%;
+  }
+
+  .CodeMirror-linenumber, .CodeMirror-line span {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', "PingFang SC", "Microsoft YaHei",
+      sans-serif;
+  }
+}
+
+// .editor-wrap:after {
+//   content: '';
+//   border-right: 1px solid @LINE_COLOR;
+//   cursor: ew-resize;
+// }
+
+// 顶部控制组件样式
+.editor-header-control {
+  height: 1.8rem;
+  display: flex;
+  align-items: stretch;
+  justify-content: space-between;
+  background-color: @DEEP_BACKGROUND_COLOR;
+
+  // title部分图片居中
+  .title-wrap {
+    display: flex;
+    
+    .title-inner {
+      display: flex;
+      align-items: center;
+      padding: .2rem .6rem .2rem .2rem;
+      font-weight: 200;
+  
+      img {
+        width: 1rem;
+        margin-top: 0.1rem;
+        vertical-align: middle;
+      }
+    }
+  }
+
+  span {
+    font-weight: 200;  
+  }
+
+  // 文章标题
+  .content-title {
+    margin-right: 2rem;
+    padding: .2rem;
+  }
+
+  
+  // 右侧按钮包裹元素
+  .editor-button-wrap {
+    display: flex;
+  }
+
+  .editor-button-item, .editor-time {
+    padding: 0.2rem 0.6rem;
+
+    img {
+      width: 1.2rem;
+      vertical-align: middle;
+      margin-top: -0.14rem;
+      margin-right: 0.2rem;
+    }
+  }
+
+  .editor-time {
+    width: 8.6rem;
+    text-align: left;
+  }
+
+  // 按钮hover
+  .editor-button-item:hover, .title-inner:hover {
+    background-color: @TABLE_BORDER;
+    transition: .2s all;
+  }
+
+  .editor-button-item:not(:hover), .title-inner:not(:hover) {
+    background-color: @DEEP_BACKGROUND_COLOR;
+    transition: .2s all;
+  }
+
+}

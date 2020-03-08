@@ -2,11 +2,12 @@
 @import './../../../colors.less';
 
 .markdown-reader {
-
-  width: 60rem;
+  // 撑满剩余空间
+  flex-grow: 1;
   background-color: #fff;
   padding: 2rem;
-  margin-top: 1rem;
+  // margin-top: 1rem;
+  overflow-y: auto;
   text-align: justify;
 
   p, span, li, td, th {

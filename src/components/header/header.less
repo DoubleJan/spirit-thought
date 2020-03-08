@@ -107,6 +107,45 @@
       opacity: 1;
     }
   }
+
+  // 羽毛笔最外层div
+  .nav-item-write {
+    vertical-align: middle;
+    margin-top: -0.4rem;
+  }
+  // 羽毛笔图标包裹span的样式
+  .nav-write-wrap {
+    border-radius: 2rem;
+    width: 2rem;
+    height: 2rem;
+    background-color: @THEME_COLOR;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    vertical-align: middle;
+    cursor: pointer;
+  }
+
+  // 最右侧羽羽毛笔图标的样式
+  .nav-write-img {
+    width: 60%;
+    height: 60%;
+  }
+
+  .nav-write-wrap:hover {
+    background-color: @THEME_LIGHT_COLOR;
+    transition: .6s all;
+  }
+
+  .nav-write-wrap:not(:hover) {
+    background-color: @THEME_COLOR;
+    transition: .2s all;
+  }
+
+  .nav-write-wrap:active {
+    background-color: @THEME_DEEP_COLOR;
+    transition: .4s all;
+  }
 }
 
 // health页面的样式

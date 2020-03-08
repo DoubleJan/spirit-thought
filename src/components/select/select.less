@@ -1,0 +1,70 @@
+// select组件的样式
+@import '~@/colors.less';
+
+// select包裹组件
+.select-wrap {
+  position: relative;
+  padding: .2rem .4rem;
+  min-width: fit-content;
+  text-align: center;
+
+  .placeholder {
+    color: @LITLE_COLOR;
+  }
+}
+
+
+// select options包裹元素
+.select-list-wrap {
+  min-width: max-content;
+  margin-left: -0.38rem;
+  max-height: 0rem;
+  overflow: hidden;
+  position: absolute;
+  z-index: 10;
+  background-color: #ffffff;
+  border-radius:  .2rem;
+  margin-top: .2rem;
+  box-shadow: 0 0 .6rem 0 rgba(0, 0, 0, .05);
+
+}
+
+// select 每个可选option
+.select-list-option {
+  width: 100%;
+  justify-content: center;
+  box-sizing: border-box;
+  padding: .4rem 1rem;
+  font-weight: 100;
+  border-top: 1px solid @DEEP_BACKGROUND_COLOR;
+  color: @CONTENT_COLOR;
+}
+
+.select-wrap:hover {
+  background-color: @LINE_COLOR;
+
+  .select-list-wrap {
+    max-height: 10rem;
+    transition: .4s all;
+  }
+}
+
+.select-wrap:not(:hover) {
+  background-color: @DEEP_BACKGROUND_COLOR;
+
+  .select-list-wrap {
+    max-height: 0;
+    transition: .2s all;
+  }
+}
+
+.select-list-option:hover {
+  background-color: rgba(180, 76, 151, 0.05);
+  transition: .4s all;
+}
+
+.select-list-option:not(:hover) {
+  background-color: #fff;
+  transition: .4s all;
+}
+

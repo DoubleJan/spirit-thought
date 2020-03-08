@@ -48,6 +48,13 @@ interface DirectoryContent {
 type DirectoryList = Array<DirectoryType>;
 type HeadingLevel = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' |'h6';
 
+// reader组件接收的参数类型
+interface ReaderProps {
+  content: string;
+  isDirectory?: boolean;
+  fixedHeight?: number;
+  [props: string]: any;
+}
 
 export {
   CodeProps,
@@ -58,5 +65,6 @@ export {
   DirectoryType,
   HeadingLevel,
   DirectoryFunction,
-  DirectoryContent
+  DirectoryContent,
+  ReaderProps
 }

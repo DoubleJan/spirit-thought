@@ -11,8 +11,10 @@ import Article from './pages/article/Article';
 import Code from './pages/code/Code';
 
 import Admin from './pages/admin/Admin';
+import Create from './pages/create/Create';
 import Health from './pages/health/Health';
 import Login from './pages/login/Login';
+import Editor from './pages/editor/Editor';
 
 import ReadPage from './pages/readPage/readPage';
 
@@ -28,11 +30,13 @@ function App() {
         <div className={`${href.includes('/health') ? '' : 'page-body'}`}>
           <Switch>
             <Route exact path="/" component={Home} />
-            <Route exact path="/note" component={Note}/>
+            <Route exact path="/note" component={Note} />
             <Route exact path="/article" component={Article} />
             <Route exact path="/code" component={Code} />
             <Route exact path="/health" component={Health} />
             <Route exact path="/admin" component={Admin} />
+            <Route exact path="/create" component={Create} />
+            <Route exact path="/editor" component={Editor} />
             <Route exact path="/login" component={Login} />
             <Route path={['/note/reader', '/article/reader']} component={ReadPage} />
             <Redirect to="/" />
