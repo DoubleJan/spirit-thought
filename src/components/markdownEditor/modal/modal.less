@@ -1,0 +1,197 @@
+// 编辑器modal弹窗样式
+@import '~@/colors.less'; 
+
+@keyframes hiddenModal {
+  from {
+    margin-top: 0rem;
+    opacity: 1;
+  }
+
+  to {
+    margin-top: -4rem;
+    opacity: 0;
+  }
+}
+
+@keyframes showModal {
+  from {
+    margin-top: -4rem;
+    opacity: 0;
+  }
+
+  to {
+    margin-top: 0rem;
+    opacity: 1;
+  }
+}
+
+// 蒙版
+.editor-modal-shadow {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.editor-modal-outer {
+  position: absolute;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  z-index: 20;
+}
+
+// 包裹元素
+.editor-modal-wrap {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  z-index: 30;
+  width: 26rem;
+  height: 32rem;
+  padding: 1.6rem 2rem;
+  box-sizing: border-box;
+  border-radius: .1rem;
+  overflow: hidden;
+  background-color: #fff;
+  
+  // 按钮和输入框基础样式
+  .input, .button {
+    margin-top: 1rem;
+    font-size: 1.2rem;
+    // line-height: 2.4rem;
+    border-radius: 0.1rem;
+    padding: .6rem;
+  }
+
+  // 标题
+  .editor-modal-title {
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: @THEME_COLOR;
+    margin-bottom: 1rem;
+  }
+
+  // button的各种状态样式
+  .button {
+    background-color: @THEME_COLOR;
+    outline: none;
+    color: #fff;
+    border: none;
+    text-align: center;
+    margin-top: 2rem;
+  }
+
+  .button:hover {
+    background-color: @THEME_LIGHT_COLOR;
+    border-radius: 2rem;
+    transition: .6s all;
+  }
+
+  .button:not(:hover) {
+    background-color: @THEME_COLOR;
+    border-radius: .1rem;
+    transition: .2s all;
+  }
+
+  .button:active {
+    background-color: @THEME_DEEP_COLOR;
+    transition: .4s all;
+  }
+
+  // placeholder样式
+  // 针对chrome，firefox，ie设置placeholder颜色
+  input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
+    color: @LITLE_COLOR;
+  }
+
+  input:-ms-input-placeholder, textarea::-webkit-input-placeholder {
+    color: @LITLE_COLOR;
+  }
+
+  input::-moz-placeholder, textarea::-webkit-input-placeholder {
+    color: @LITLE_COLOR;
+  }
+
+  .input {
+    border: 1px solid @TABLE_BORDER;
+    font-weight: 200;
+    color: @TITLE_COLOR;
+  }
+
+  // input输入框获取焦点时的样式
+  .input:focus {
+    border: 1px solid @THEME_COLOR;
+    transition: .4s all;
+    box-shadow: 0 0 .2rem 0 @THEME_COLOR;
+  }
+
+  // 禁用的鼠标
+  .disabled {
+    cursor:not-allowed; 
+  }
+
+  // 禁止用户拖动文本域的宽度
+  .textarea {
+    resize: none;
+    font-size: 1.2rem;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  }
+}
+
+
+// 定义动画
+@keyframes modalShadowShow {
+  from {   
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes modalShadowHidden {
+  from {   
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+// 显示modal蒙版
+.modal-shadow-is-show {
+  animation: modalShadowShow .4s forwards;
+}
+
+// 隐藏modal蒙版
+.modal-shadow-is-hidden {
+  animation: modalShadowHidden .4s forwards;
+}
+
+// 控制外层包裹元素是否显示
+// 动画结束后要隐藏外层元素，不然会占据界面空间
+.editor-modal-outer-is-hidden {
+  visibility: hidden;
+}
+
+.editor-modal-outer-is-show {
+  visibility: visible;
+}
+
+// 显示modal弹框
+.modal-wrap-is-show {
+  animation: showModal .4s forwards;
+
+}
+// 隐藏modal弹框
+.modal-wrap-is-hidden {
+  animation: hiddenModal .4s forwards;
+}
+

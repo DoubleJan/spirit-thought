@@ -1,0 +1,85 @@
+// select 组件样式
+@import '~@/colors.less';
+
+// 外层相对定位
+.select-wrapper {
+  position: relative;
+  width: 100%;
+  font-size: 1.2rem;
+
+  // input元素
+  .select-input {
+    width: 100%;
+    box-sizing: border-box;
+    padding: .6rem .6rem;
+    border: @TABLE_BORDER 1px solid;
+    border-radius: .1rem;
+    cursor: unset;
+
+    span {
+      font-size: 1.2rem;
+      font-weight: 100;
+    }
+
+    .is-placeholder {
+      color: @LITLE_COLOR;
+    }
+  }
+
+  // 下拉列表包裹元素
+  .select-dropdown-wrap {
+    position: absolute;
+    width: 100%;
+    box-sizing: border-box;
+    background-color: #fff;
+    box-shadow: 0 0.2rem .6rem 0 rgba(0, 0, 0, .1);
+    overflow: auto;
+    z-index: 20;
+
+    .select-dropdown-option {
+      padding: .6rem;
+      font-size: 1.2rem;
+      font-weight: 100;
+      width: 100%;
+      box-sizing: border-box;
+      color: @CONTENT_COLOR;
+      border-top: @LINE_COLOR 1px solid;
+    }
+    .select-dropdown-option:first {
+      border-top: none;
+    }
+
+    .select-dropdown-option:hover {
+      color: #333;
+      background-color: rgba(180, 76, 151, .1);
+      transition: .2s all;
+    }
+
+    .select-dropdown-option:not(:hover) {
+      color: @CONTENT_COLOR;
+      background-color: none;
+      transition: .2s all;
+    }
+  }
+
+  // 控制是否显示下拉列表
+  .dropdown-is-show {
+    // visibility: visible;
+    // opacity: 1;
+    max-height: 10rem;
+    transition: .4s all;
+  }
+
+  .dropdown-is-hidden {
+    max-height: 0rem;
+    // opacity: 0;
+    transition: .4s all;
+  }
+
+  // 不显示滚动条
+  .select-dropdown-wrap::-webkit-scrollbar {
+    display: none;
+  }
+
+
+}
