@@ -8,3 +8,12 @@ export async function getNoteDirectory(params?: any) {
     method: 'GET'
   });
 }
+
+// 新增文章
+export async function addContent(params?: any) {
+  return request({
+    url: `/api/content/${params.type}/addContent`,
+    data: params,
+    method: 'POST'
+  });
+}
